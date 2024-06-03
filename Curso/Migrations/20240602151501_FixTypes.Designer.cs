@@ -4,6 +4,7 @@ using Curso.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Curso.Migrations
 {
     [DbContext(typeof(AplicationContext))]
-    partial class AplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240602151501_FixTypes")]
+    partial class FixTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace Curso.Migrations
                         .HasColumnType("CHAR(8)");
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("VARCHAR(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
                         .IsRequired()
